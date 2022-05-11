@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.artFairsMapper">
+
+	<select id="getAtrFairsView" parameterType="String" resultType="artFairsDTO"> 
+		select * from artFairsMain where title = #{title} 
+	</select>
+	
+	<select id="getAtrFairsMain" resultType="artFairsDTO"> 
+		select * from artFairsMain order by afdate desc 
+	</select>
+	
+	<insert id="insertArtFairs" parameterType="artFairsDTO"> 
+		insert into artFairsMain values (#{mainimg_src}, #{afdate}, #{title}, #{info_date}, 
+		#{info}, #{detailimg_src}, #{place}, #{place_detail}, #{artists}, #{artist_name}, 
+		#{img_src1}, #{img_src2}, #{img_src3}) 
+	</insert>
+	
+	<update id="updateArtFairs" parameterType="artFairsDTO"> 
+		update artFairsMain set mainimg_src=#{mainimg_src}, afdate=#{afdate}, info_date=#{info_date}, 
+		info=#{info}, detailimg_src=#{detailimg_src}, place=#{place}, place_detail=#{place_detail}, 
+		artist_name=#{artist_name}, img_src1=#{img_src1}, img_src2=#{img_src2}, img_src3=#{img_src3} where title=#{title} 
+	</update>
+	
+	<delete id="deleteArtFairs" parameterType="String"> 
+		delete from artFairsMain where title=#{title} 
+	</delete>
+
+</mapper>
